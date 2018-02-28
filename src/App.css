@@ -1,0 +1,16 @@
+.App {
+  text-align: center;
+}
+
+button {
+  display: inline-block;
+  font-family: "Montserrat", "Trebuchet MS", Helvetica, sans-serif;
+  padding: .8em 1.4em;
+  background: #009ED8;
+  border: none;
+  color: white;
+  transition: .2s;
+  font-size: 30px;
+  text-align: center;
+  margin:  100px auto;
+}
