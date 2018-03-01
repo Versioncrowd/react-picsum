@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
+import Image from './Image';
 
 class App extends Component {
 
   constructor() {
     super()
     this.state = {
-      url: null,
+      imgurl: null,
       author: null,
       title: null,
       date: null
@@ -15,13 +16,37 @@ class App extends Component {
   }
 
 
+handleSubmit = (event) => {
+  event.preventDefault();
+  const url = 'https://picsum.photos/list';
+
+  const fetchAsync = async () => {
+    try {
+      const result = await fetch(url);
+      const data = await result.json();
+      const random = Math.floor((Math.random()*Object.keys(data).length));
+      
+    this.setState(
+      {
+        author: data[random].author,
+        author_url: data[random].author_url,
+        imgurl: 'https://picsum.photos/300/200?image=' + data[random].id,
+        }
+      )
+    } catch (error) {
+      console.log('Nope: ' + error)
+    }
+  };
+  fetchAsync();
+}
+
+
   render() {
     return (
       <div className="App">  
-      <button onClick={this.getPicsumImage}>Get Random Picsum Image</button>
+      <button onClick={this.handleSubmit}>Get Random Picsum Image</button>
       <div className="picsumreturn">
-        <h3>Author: {this.state.author}, Image title: {this.state.title}, Date shot: {this.state.date} </h3>
-        <img src={this.state.url} alt="random image" />
+        <Image imgurl={this.state.imgurl} author={this.state.author} author_url={this.state.author_url} alt="random image" />
       </div>
 
       </div>
