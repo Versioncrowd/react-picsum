@@ -2,6 +2,7 @@
   "name": "picsum-react",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://versioncrowd.github.io/react-picsum/",
   "dependencies": {
     "gh-pages": "^1.1.0",
     "react": "^16.2.0",
